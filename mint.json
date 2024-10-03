@@ -41,7 +41,8 @@
     {
       "group": "Endpoints",
       "pages": [
-        "api-reference/endpoint/all_employees"
+        "api-reference/endpoint/all_employees",
+        "api-reference/endpoint/changed_jobs"
       ]
     }
   ],
