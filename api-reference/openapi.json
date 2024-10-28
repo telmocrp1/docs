@@ -1,25 +1,25 @@
 {
   "openapi": "3.0.1",
   "info": {
-    "title": "Employee Scraping API",
-    "description": "An API for scraping employee data from LinkedIn",
+    "title": "Find Contacts API",
+    "description": "An API for finding and scraping employee contact information from LinkedIn company profiles",
     "version": "1.0.0"
   },
   "servers": [
     {
-      "url": "https://scrape.revook.co/v1"
+      "url": "https://api.revook.co/v1"
     }
   ],
   "paths": {
-    "/all_employeess": {
+    "/findcontacts": {
       "post": {
-        "description": "Returns employee data based on the provided LinkedIn company ID and other optional filters",
+        "description": "Returns employee contact data based on the provided domain and job title filters. Processing time: 2 minutes per API call.",
         "requestBody": {
-          "description": "Employee scraping parameters",
+          "description": "Contact finding parameters",
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/ScrapingRequest"
+                "$ref": "#/components/schemas/FindContactsRequest"
               }
             }
           },
@@ -50,7 +50,7 @@
             }
           },
           "401": {
-            "description": "Unauthorized",
+            "description": "Unauthorized - No credits left",
             "content": {
               "application/json": {
                 "schema": {
@@ -71,109 +71,48 @@
           }
         }
       }
-    },
-    "/changed-jobs": {
-      "post": {
-        "description": "Returns data on employees who have changed jobs based on the provided LinkedIn company ID and other optional filters",
-        "requestBody": {
-          "description": "Job change scraping parameters",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/ScrapingRequest"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "Scraping successful",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/EmployeeData"
-                  }
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Invalid request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "No job changes found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        }
-      }
     }
   },
   "components": {
     "schemas": {
-      "ScrapingRequest": {
+      "FindContactsRequest": {
         "type": "object",
         "required": [
-          "linkedin_id",
+          "domain",
+          "webhook_url",
+          "title_filter",
           "x_api_key"
         ],
         "properties": {
-          "linkedin_id": {
+          "x_api_key": {
             "type": "string",
-            "description": "The LinkedIn Company ID you want to scrape"
+            "description": "Your API key",
+            "example": "129848794785875"
+          },
+          "domain": {
+            "type": "string",
+            "description": "The company domain you want to scrape",
+            "example": "qonto.com"
+          },
+          "webhook_url": {
+            "type": "string",
+            "description": "Specify the webhook (POST) URL where you want to receive your data",
+            "example": "https://api.revook.co/v1/16e8afe4-55a2-471e-ac77-a9f742393f84"
           },
           "title_filter": {
             "type": "string",
-            "description": "Job titles to search for, enclosed in parentheses and separated by commas"
+            "description": "Job titles to search for, separated by commas",
+            "example": "CEO, Sales, Marketing, growth"
           },
           "title_exclusion": {
             "type": "string",
-            "description": "Job titles to exclude from the search, enclosed in parentheses and separated by commas"
+            "description": "Job titles to exclude from the search, separated by commas",
+            "example": "Intern, Freelance, Consultant"
           },
           "geography": {
             "type": "string",
-            "description": "Geography IDs to scrape"
-          },
-          "function": {
-            "type": "string",
-            "description": "Function IDs to scrape"
-          },
-          "seniority": {
-            "type": "string",
-            "description": "Seniority IDs to scrape"
-          },
-          "webhook": {
-            "type": "string",
-            "description": "Webhook URL for receiving results"
-          },
-          "x_api_key": {
-            "type": "string",
-            "description": "Your API key"
+            "description": "Geography IDs to scrape",
+            "example": "105015875"
           }
         }
       },
@@ -181,46 +120,60 @@
         "type": "object",
         "properties": {
           "_id": {
-            "type": "string"
+            "type": "string",
+            "example": "6650adc647652dd98bd4c3a6"
           },
           "firstname": {
-            "type": "string"
+            "type": "string",
+            "example": "Lily"
           },
           "lastname": {
-            "type": "string"
+            "type": "string",
+            "example": "Tyler-Jones"
           },
           "linkedin": {
-            "type": "string"
+            "type": "string",
+            "example": "https://www.linkedin.com/in/ACwAAEpA2GEB9Vzx3xni4GnIStgw18TQJXLwXHQ"
           },
           "localisation": {
-            "type": "string"
+            "type": "string",
+            "example": "Norwich, England, United Kingdom"
           },
           "linkedin_id": {
-            "type": "string"
+            "type": "string",
+            "example": "ACwAAEpA2GEB9Vzx3xni4GnIStgw18TQJXLwXHQ"
           },
           "image": {
-            "type": "string"
+            "type": "string",
+            "example": "https://media.licdn.com/dms/image/D4D03AQGzyOXQa6Y3Xg/profile-displayphoto-shrink_800_800/0/1704731924634"
           },
           "title_original": {
-            "type": "string"
+            "type": "string",
+            "example": "Sales Assistant"
           },
           "started_position_year": {
-            "type": "integer"
+            "type": "integer",
+            "example": 2022
           },
           "started_position_month": {
-            "type": "integer"
+            "type": "integer",
+            "example": 10
           },
           "executionId": {
-            "type": "integer"
+            "type": "integer",
+            "example": 2083579
           },
           "tenure_at_company_month": {
-            "type": "integer"
+            "type": "integer",
+            "example": 8
           },
           "tenure_at_company_year": {
-            "type": "integer"
+            "type": "integer",
+            "example": 1
           },
           "tenure_at_position": {
-            "type": "integer"
+            "type": "integer",
+            "example": 8
           }
         }
       },
@@ -232,10 +185,12 @@
         ],
         "properties": {
           "code": {
-            "type": "string"
+            "type": "string",
+            "example": "invalid_request_linkedin_id"
           },
           "message": {
-            "type": "string"
+            "type": "string",
+            "example": "Wrong input"
           }
         }
       }
