@@ -87,7 +87,7 @@
           "x_api_key": {
             "type": "string",
             "description": "Your API key",
-            "example": "129848794785875"
+            "example": "YOUR_API_KEY"
           },
           "domain": {
             "type": "string",
@@ -97,7 +97,7 @@
           "webhook_url": {
             "type": "string",
             "description": "Specify the webhook (POST) URL where you want to receive your data",
-            "example": "https://api.revook.co/v1/16e8afe4-55a2-471e-ac77-a9f742393f84"
+            "example": "https://api.revook.co/v1/webhook-receive"
           },
           "title_filter": {
             "type": "string",
