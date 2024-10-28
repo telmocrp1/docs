@@ -1,0 +1,72 @@
+---
+title: 'Authentication'
+description: 'Learn how to authenticate your requests with Find Contacts API'
+---
+
+To use the Find Contacts API, you need to authenticate your requests using an API key. This key should be included in every request you make to our API.
+
+## Getting Your API Key
+
+To obtain an API key:
+
+1. Sign up for an account at [Find Contacts Dashboard](https://dashboard.findcontacts.com)
+2. Navigate to the API section
+3. Generate a new API key
+
+<Note>
+  Keep your API key secure and never share it publicly. If your key is compromised, you can generate a new one from the dashboard.
+</Note>
+
+## Using Your API Key
+
+Include your API key in the request header as `x_api_key`:
+
+```bash
+curl -X POST "https://api.revook.co/v1/findcontacts" \
+  -H "Content-Type: application/json" \
+  -H "x_api_key: YOUR_API_KEY" \
+  -d '{
+    "domain": "example.com",
+    "webhook_url": "https://your-webhook.com/endpoint"
+  }'
+```
+
+## API Key Best Practices
+
+<Card title="Security Guidelines" icon="shield-check">
+  - Store your API key securely
+  - Use environment variables in your applications
+  - Never commit API keys to version control
+  - Rotate keys periodically for enhanced security
+</Card>
+
+## Error Responses
+
+If authentication fails, you'll receive this response:
+
+| Status Code | Error Code | Description |
+| --- | --- | --- |
+| 401 | unauthorized | No credits left |
+
+Example error response:
+
+```json
+{
+  "code": "unauthorized",
+  "message": "No credits left"
+}
+```
+
+## Next Steps
+
+Once you've authenticated successfully, you can start using our API endpoints:
+
+<Card title="Getting Started" icon="rocket">
+  1. [Search for Contacts](/api-reference/endpoint/findcontacts)
+  2. [Handle Webhook Responses](/api-reference/endpoint/webhooks)
+  3. [Process Results](/api-reference/endpoint/results)
+</Card>
+
+<Note>
+  Need help? Contact our support team at support@findcontacts.com
+</Note>
