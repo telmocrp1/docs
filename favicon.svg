@@ -1,1 +1,11 @@
-<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class=""><rect id="r9" width="512" height="512" x="0" y="0" rx="128" fill="url(#ra)" stroke="#FFFFFF" stroke-width="0" stroke-opacity="100%" paint-order="stroke"></rect><clipPath id="clip"><use xlink:href="#r9"></use></clipPath><defs><radialGradient id="ra" cx="50%" cy="50%" r="100%" fx="50%" fy="100%" gradientUnits="objectBoundingBox"><stop stop-color="#202020"></stop><stop offset="0.5" stop-color="#000000"></stop></radialGradient><radialGradient id="rb" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(256) rotate(90) scale(512)"><stop stop-color="white"></stop><stop offset="1" stop-color="white" stop-opacity="0"></stop></radialGradient></defs><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 16" width="352" height="352" x="80" y="80" alignment-baseline="middle" style="color: rgb(230, 230, 230);"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 10.25v-8.5m0 8.5 3.25-3.5M8 10.25l-3.25-3.5m-3 5v.5a2 2 0 0 0 2 2h8.5a2 2 0 0 0 2-2v-.5"></path></svg></svg>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 419.19 361.54">
+  <g id="_Слой_1" data-name="Слой 1">
+    <g>
+      <path d="M190.5,0h228.69c0,31.6-12.8,60.18-33.48,80.86-20.69,20.69-49.3,33.48-80.86,33.48s-60.18-12.8-80.86-33.48c-20.69-20.69-33.48-49.26-33.48-80.86Z"/>
+      <path d="M190.5,190.5h228.69c0,31.6-12.8,60.18-33.48,80.86-20.69,20.69-49.3,33.48-80.86,33.48s-60.18-12.8-80.86-33.48c-20.69-20.69-33.48-49.26-33.48-80.86Z"/>
+      <path d="M0,0h171.05v171.05h0C76.64,171.05,0,94.4,0,0H0Z"/>
+      <path d="M171.05,190.5h0v171.05H0C0,267.14,76.64,190.5,171.05,190.5Z" transform="translate(-190.5 361.54) rotate(-90)"/>
+    </g>
+  </g>
+</svg>
